@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!
+{% endblock %}
+
+{% block body %}
+	{% include "_navbar.html.twig" %}
+	<div class="login-form">
+		{{ form_start(form) }}
+		<h1>Your personnal informations</h1>
+		{{ form_widget(form) }}
+		<button type="submit">Update</button>
+		{{ form_end(form) }}
+	</div>
+
+{% endblock %}

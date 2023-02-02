@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+	{% include "_navbar.html.twig" %}
+
+	<main>
+		<div class="home">
+			<h1>Prepare<br>your<br>next<br>journey</h1>
+            {% if app.user == null %}
+            
+			<div>
+				<a href="/register" class="register-button">join us</button>
+				<a href="/login"class="sign-in-button">sign in instead
+					<span><img src="/build/images/right-arrow.png" class="right-arrow"></span>
+				</a>
+			</div>
+            {% endif %}
+		</div>
+		<main>
+
+		{% endblock %}

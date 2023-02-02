@@ -1,0 +1,21 @@
+{% block body %}
+
+    <nav class="custom-navbar">
+        <a href="/"><img src="/build/images/logo.png" class="logo"></a>
+        <div class="nav-links animate__animated">
+            <ul>
+            {% if app.user %}
+				<li><a href="/profile">{{ app.user.userIdentifier }}</a>
+                <li><a href="#">My team</a></li>
+                <li><a href="/pokemon">Browse</a></li>
+                <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/pokemon">Browse</a></li>
+			{% endif %}
+                
+            </ul>
+        </div>
+        <img class="mobile-menu" src="/build/images/burger-button.png">
+    </nav>
+
+{% endblock %}
