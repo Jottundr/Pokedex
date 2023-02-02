@@ -16,7 +16,7 @@ class PokemonController extends AbstractController
     public function allPokemons(HttpClientInterface $client): Response
     {
         $pokemons = [];
-        for ($id = 1; $id <= 251; $id++) {
+        for ($id = 1; $id <= 151; $id++) {
             $response = $client->request('GET', 'https://pokeapi.co/api/v2/pokemon/' . $id);
             $content = $response->toArray();
 

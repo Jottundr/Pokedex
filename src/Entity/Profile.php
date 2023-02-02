@@ -22,7 +22,7 @@ class Profile
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     private ?User $user_id = null;
 
     public function getId(): ?int
