@@ -19,8 +19,12 @@ class ProfileController extends AbstractController
         $profile = $profileRepository->findOneBy(['id' => $user]);
         if (!$profile) {
             $profile = new Profile();
-        }
-        
+            $form = $this->createForm(ProfileType::class, $profile);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $profileRepository->save($profile, true);
+            }
+        }       
         $form = $this->createForm(ProfileType::class, $profile);
 
         $form->handleRequest($request);

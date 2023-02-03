@@ -17,10 +17,10 @@ class ProfileType extends AbstractType
                 'attr' => ['placeholder' => 'Username']])
             ->add('lastname', null, [
                 'label' => false,
-                'attr' => ['placeholder' => 'Username']])
+                'attr' => ['placeholder' => 'Lastname']])
             ->add('firstname', null, [
                 'label' => false,
-                'attr' => ['placeholder' => 'Username']])
+                'attr' => ['placeholder' => 'Firstname']])
         ;
     }
 
