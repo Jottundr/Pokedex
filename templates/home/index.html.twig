@@ -1,24 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome on your personnal Pokedex{% endblock %}
+{% block title %}Welcome on your personnal Pokedex
+{% endblock %}
 
 {% block body %}
 
 	{% include "_navbar.html.twig" %}
+	<div class="home">
+		<h1>Prepare<br>your<br>next<br>journey</h1>
+		{% if app.user == null %}
 
-	<main>
-		<div class="home">
-			<h1>Prepare<br>your<br>next<br>journey</h1>
-            {% if app.user == null %}
-            
-			<div>
-				<a href="/register" class="register-button">join us</button>
-				<a href="/login"class="sign-in-button">sign in instead
-					<span><img src="/build/images/right-arrow.png" class="right-arrow"></span>
-				</a>
+			<div class="auth-section">
+				<a href="/register" class="register">join us <img class="pikachu" src="/build/images/pikachu.png"></a>
+				<div class="login">
+					<a href="/login">
+						log-in <img src="/build/images/right-arrow.png">
+					</a>
+				</div>
 			</div>
-            {% endif %}
-		</div>
-		<main>
+			
+		{% endif %}
+	</div>
 
-		{% endblock %}
+{% endblock %}
