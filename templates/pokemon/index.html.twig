@@ -1,39 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PokemonController!
+{% block title %}Pokemons
 {% endblock %}
 
 {% block body %}
 	{% include "_navbar.html.twig" %}
-<div class="pokemon-list">
-	{% for pokemon in pokemons %}
+	<h1 class="title">search for a pokemon and add it to your team</h1>
+	<div class="pokemon-list">
 
-		
-		<div class="a-box">
-			<div class="img-container">
-				<div class="img-inner">
-					<div class="inner-skew">
-						<img src="{{ pokemon.sprite }}">
+		{% for pokemon in pokemons %}
+
+
+			<div class="a-box">
+				<div class="img-container">
+					<div class="img-inner">
+						<div class="inner-skew">
+							<img src="{{ pokemon.sprite }}">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="text-container">
-				<h3>#{{ pokemon.pokedexNumber }} {{ pokemon.name }}</h3>
-				<div>
-					{{ pokemon.type1 }}
-					{% if pokemon.type2 %}
-						/ {{ pokemon.type2 }}
-					{% endif %}
-					
+				<div class="text-container">
+					<h3>#{{ pokemon.pokedexNumber }}
+						{{ pokemon.name }}</h3>
+					<div>
+						{{ pokemon.type1 }}
+						{% if pokemon.type2 %}
+							/
+							{{ pokemon.type2 }}
+						{% endif %}
+
+					</div>
+					<div><br><a href={{ '/savePokemon/' ~ pokemon.name }} class="save-button">I choose you!</a>
+					</div>
+
 				</div>
-				<div><br><a href={{ '/savePokemon/' ~ pokemon.name }} class="save-button">I choose you!</a></div>
-				
 			</div>
-		</div>
-		
 
 
-	{% endfor %}
-</div>
+		{% endfor %}
+	</div>
 
 {% endblock %}

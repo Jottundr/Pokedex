@@ -6,35 +6,40 @@
 {% block body %}
 	{% include "_navbar.html.twig" %}
 
-	<div class="pokemon-list">
 
-		{% for pokemon in pokemons %}
-
-			<div class="a-box">
-				<div class="img-container">
-					<div class="img-inner">
-						<div class="inner-skew">
-							<img src="{{ pokemon.sprite }}">
+	{% for pokemon in pokemons %}
+		{% if pokemons != null %}
+			<h1 class="title">your pokemons</h1>
+			<div class="pokemon-list">
+				<div class="a-box">
+					<div class="img-container">
+						<div class="img-inner">
+							<div class="inner-skew">
+								<img src="{{ pokemon.sprite }}">
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="text-container">
-					<h3>#{{ pokemon.pokedexNumber }}
-						{{ pokemon.name }}</h3>
-					{# <div>
-						{{ pokemon.type1 }}
-						{% if pokemon.type2 %}
-							/
-							{{ pokemon.type2 }}
-						{% endif %}
-					</div> #}
-					<div><br><a href="#" class="save-button">Release</a>
-					</div>
+					<div class="text-container">
+						<h3>#{{ pokemon.pokedexNumber }}
+							{{ pokemon.name }}</h3>
+						{# <div>
+							{{ pokemon.type1 }}
+							{% if pokemon.type2 %}
+								/
+								{{ pokemon.type2 }}
+							{% endif %}
+						</div> #}
+						<div><br><a href={{ '/deletePokemon/' ~ pokemon.name }} class="save-button">Release</a>
+						</div>
 
+					</div>
 				</div>
-			</div>
+			{% endif %}
+		{% else %}
+			<h1 class="title">no pokemon catched</h1>
 
 		{% endfor %}
 	</div>
+
 
 {% endblock %}

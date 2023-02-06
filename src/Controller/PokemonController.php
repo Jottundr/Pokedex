@@ -7,6 +7,7 @@ use App\Repository\PokemonRepository;
 use App\Repository\ProfileRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -87,5 +88,21 @@ class PokemonController extends AbstractController
         $pokemonRepository->save($pokemon, true);
 
         return $this->redirect('/pokemon');
+    }
+
+    #[Route('/deletePokemon/{name}', name: 'app_delete_pokemon')]
+    public function deletePokemon(string $name = null, PokemonRepository $pokemonRepository, ProfileRepository $profileRepository)
+    {
+        $trainer = $profileRepository->findOneBy(['id' => $this->getUser()]);
+        $pokemon = $pokemonRepository->findOneBy(['name' => $name]);
+
+        if (!$pokemon) {
+            throw new NotFoundHttpException('Pokemon not found');
+        }
+
+        $trainer->removePokemon($pokemon);
+        $pokemonRepository->remove($pokemon, true);
+
+        return $this->redirect('/team');
     }
 }
