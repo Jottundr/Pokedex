@@ -5,12 +5,19 @@
 
 {% block body %}
 	{% include "_navbar.html.twig" %}
+	{% if pokemons.snapshot %}
+		<h1 class="title">your pokemons</h1>
+	{% else %}
+		
+	<h1 class="title">No pokemons</h1>
+	{% endif %}
+	<div class="pokemon-list">
+	
+	
 
+		{% for pokemon in pokemons %}
+			{% if pokemon %}
 
-	{% for pokemon in pokemons %}
-		{% if pokemons != null %}
-			<h1 class="title">your pokemons</h1>
-			<div class="pokemon-list">
 				<div class="a-box">
 					<div class="img-container">
 						<div class="img-inner">
@@ -35,11 +42,8 @@
 					</div>
 				</div>
 			{% endif %}
-		{% else %}
-			<h1 class="title">no pokemon catched</h1>
-
 		{% endfor %}
-	</div>
 
+	</div>
 
 {% endblock %}

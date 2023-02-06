@@ -207,6 +207,7 @@ form button {
     background-color: black;
     color: white;
     font-family: 'Rock Salt', cursive;
+    cursor: pointer;
 }
 
 form div input {
@@ -218,10 +219,8 @@ form div input {
 
 .a-box {
     display: inline-block;
-    margin: auto;
     width: 240px;
     text-align: center;
-    box-sizing: border-box;
   }
   
   .img-container {
@@ -251,7 +250,7 @@ form div input {
   }
 
   .inner-skew img {
-    width: 75%;
+    width: 100%;
   }
   
   .text-container {
@@ -295,8 +294,26 @@ form div input {
 .title {
     font-family: 'Rock Salt', cursive;
     text-align: center;
-    margin: 0 20px;
+    margin: 0 20px 50px 20px;
+}
 
+.search-input {
+    margin-bottom: 0px;
+}
+
+.search-suggestion {
+    font-family: 'Red Hat Text', sans-serif;
+    margin-bottom: 30px;
+    text-align: end;
+}
+
+.search-suggestion a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.search-button {
+    margin-top: 20px;
 }
 
 @media screen and (min-width: 1200px) {
@@ -329,5 +346,4 @@ form div input {
         background-image: url(/assets/images/desktop-background\ .png);
         background-size: cover;       
     }
-    
 }

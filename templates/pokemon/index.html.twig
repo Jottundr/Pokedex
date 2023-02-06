@@ -6,10 +6,20 @@
 {% block body %}
 	{% include "_navbar.html.twig" %}
 	<h1 class="title">search for a pokemon and add it to your team</h1>
+	<div class="login-form">
+		<form method="POST">
+			<input class="search-input" type="text" name="search" placeholder="Search Pokemon">
+			{% if closest %}
+				<p class="search-suggestion">Would you mean
+					<a href="">{{ closest|title }}?</a>
+				</p>
+			{% endif %}
+			<button class="search-button" type="submit">Search</button>
+		</form>
+	</div>
 	<div class="pokemon-list">
 
 		{% for pokemon in pokemons %}
-
 
 			<div class="a-box">
 				<div class="img-container">
@@ -28,15 +38,15 @@
 							/
 							{{ pokemon.type2 }}
 						{% endif %}
-
 					</div>
-					<div><br><a href={{ '/savePokemon/' ~ pokemon.name }} class="save-button">I choose you!</a>
-					</div>
+					{% if app.user %}
+						<div>
+							<br><a href={{ '/savePokemon/' ~ pokemon.name }} class="save-button">I choose you !!</a>
+						</div>
 
+					{% endif %}
 				</div>
 			</div>
-
-
 		{% endfor %}
 	</div>
 
